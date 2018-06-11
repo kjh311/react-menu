@@ -12,10 +12,31 @@ import Contact from "./Contact";
 import Admin from "./Admin";
 import About from "./About";
 import Menu from "./Menu";
+import * as firebase from 'firebase';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      speed: 10
+    };
+  }
+
+  componentDidMount() {
+    const rootRef = firebase.database().ref().child('react');
+    const speedRef = rootRef.child('speed');
+    speedRef.on('value', snap => {
+      this.setState({
+        speed: snap.val()
+      });
+    });
+  }
+
   render() {
     return (
+      <div>
+      <h1> {this.state.speed}</h1>  
       <HashRouter>
       <div className="App">
    
@@ -27,7 +48,9 @@ class App extends Component {
             <Route path="/menu" component={Menu}/>
           </div>
       </div>
+      
       </HashRouter>
+      </div>
     );
   }
 }
