@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 // import './App.css';
 import {
   Route,
-  NavLink,
+  // NavLink,
   HashRouter
 } from "react-router-dom";
 import Home from "./Home";
-import Stuff from "./Stuff";
+// import Stuff from "./Stuff";
 import Contact from "./Contact";
 import Admin from "./Admin";
+import About from "./About";
+import Menu from "./Menu";
 
 class App extends Component {
   render() {
     return (
       <HashRouter>
       <div className="App">
-         <h1>Simple SPA</h1>
-          <ul className="header">
-            <li><NavLink exact to="/">Home</NavLink></li>
-            <li><NavLink to="/stuff">Stuff</NavLink></li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/admin">Admin</NavLink></li>
-          </ul>
+   
           <div className="content">
             <Route exact path="/" component={Home}/>
-            <Route path="/stuff" component={Stuff}/>
+            <Route path="/about" component={About}/>
             <Route path="/contact" component={Contact}/>
             <Route path="/admin" component={Admin}/>
+            <Route path="/menu" component={Menu}/>
           </div>
       </div>
       </HashRouter>
