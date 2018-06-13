@@ -19,7 +19,7 @@ import * as firebase from 'firebase';
     storageBucket: "",
     messagingSenderId: "691164886655"
   };
-  firebase.initializeApp(config);
+  // firebase.initializeApp(config);
 
 
  
