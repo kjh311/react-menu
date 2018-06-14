@@ -6,7 +6,7 @@ class Login extends Component {
   constructor(props){
     super(props);
     this.login = this.login.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
     this.state = {
       email:'',
       password:''
@@ -27,7 +27,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="col-md-6">
+      <div>
+
+      <div className="loginForm col-md-12">
+      <h1>Administrator Login:</h1>
       <form>
       <div className="form-group">
       <label htmlFor="exampleInputEmail">Email Address</label>
@@ -41,15 +44,16 @@ class Login extends Component {
       className="form-control" id="exampleInputPassword1" placeholder="Password" />
       </div>
       <button type="submit" onClick={this.login} className="btn btn-primary">Login</button>
-      <button onClick={this.signup} style={{marginLeft: '25px'}} className="btn btn-success">Signup</button>
+      <p>To create a new Admin user, visit your Firebase account.</p>
       </form>
 
       </div>
 
+      </div>
     );
   }
 
-
+// <button onClick={this.signup} style={{marginLeft: '25px'}} className="btn btn-success">Signup</button>
 }
 
 export default Login;

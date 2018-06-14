@@ -14,6 +14,7 @@ import About from "./About";
 import Menu from "./Menu";
 import fire from "./config/Fire";
 import Login from "./Login";
+import Crud from "./Crud";
 
 class App extends Component {
 
@@ -49,7 +50,7 @@ class App extends Component {
               <Route path="/contact" component={Contact} />
               <Route path="/admin" component={Admin} />
               <Route path="/menu" component={Menu} />
-              {this.state.user ? (<Home />) : (<Login />)}
+              
             </div>
           </div>
         </HashRouter>
