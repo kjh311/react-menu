@@ -8,17 +8,17 @@ import Header from './Header';
 // import Widget from './Widget';
 import Footer from './Footer';
 import registerServiceWorker from './registerServiceWorker';
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 
   // Initialize Firebase
-  var config = {
-    apiKey: process.env.apiKey,
-    authDomain: "menu-e94f8.firebaseapp.com",
-    databaseURL: "https://menu-e94f8.firebaseio.com",
-    projectId: "menu-e94f8",
-    storageBucket: "",
-    messagingSenderId: "691164886655"
-  };
+  // var config = {
+  //   apiKey: process.env.apiKey,
+  //   authDomain: "menu-e94f8.firebaseapp.com",
+  //   databaseURL: "https://menu-e94f8.firebaseio.com",
+  //   projectId: "menu-e94f8",
+  //   storageBucket: "",
+  //   messagingSenderId: "691164886655"
+  // };
   // firebase.initializeApp(config);
 
 
