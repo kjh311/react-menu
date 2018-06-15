@@ -1,5 +1,5 @@
 import React from "react";
-import Admin from "./Admin";
+// import Admin from "./Admin";
 import Login from "./Login";
 import Crud from "./Crud";
 import fire from "./config/Fire";

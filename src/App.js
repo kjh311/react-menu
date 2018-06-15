@@ -13,8 +13,8 @@ import Admin from "./Admin";
 import About from "./About";
 import Menu from "./Menu";
 import fire from "./config/Fire";
-import Login from "./Login";
-import Crud from "./Crud";
+// import Login from "./Login";
+// import Crud from "./Crud";
 
 class App extends Component {
 

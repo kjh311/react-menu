@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import fire from './config/Fire';
 
 class Login extends Component {
@@ -17,7 +17,7 @@ class Login extends Component {
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{
     }).catch((error) => {
-      console.log(error);
+      alert(error);
     });
   }
 
@@ -43,8 +43,8 @@ class Login extends Component {
       <input  value={this.state.password} onChange={this.handleChange} type="password" name="password"
       className="form-control" id="exampleInputPassword1" placeholder="Password" />
       </div>
-      <button type="submit" onClick={this.login} className="btn btn-primary">Login</button>
-      <p>To create a new Admin user, visit your Firebase account.</p>
+      <button type="submit" onClick={this.login} className="btn btn-success">Login</button>
+      <p>To create a new Admin user, visit your <a href="https://firebase.google.com/" target="_blank">FireBase Account</a></p>
       </form>
 
       </div>
