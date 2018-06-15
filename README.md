@@ -12,5 +12,5 @@ This idea behind this app is to create a 'template' for restraunt / coffee shop 
     "node-sass-chokidar": "^1.3.0",
     "react-router-dom": "^4.3.1"
 
-"npm start" - run server
-"npm run start" - run sass compiler
+##"npm start" - run server
+##"npm run start" - run sass compiler
