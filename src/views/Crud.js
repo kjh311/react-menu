@@ -5,17 +5,7 @@ import React from "react";
 import fire from "../config/Fire";
 import * as firebase from "firebase";
 
-
-
-
-
-
-
-
-
 export default class Crud extends React.Component {
-
-
 
     constructor(props){
     super(props);
@@ -28,13 +18,28 @@ export default class Crud extends React.Component {
     componentDidMount() {
       this.authListener();
     // const rootRef = firebase.database().ref().child('react');
+
+
+
     const restaurantRef = firebase
       .database()
       .ref()
       .child("restaurant");
     const nameRef = restaurantRef.child("name");
+    const menuRef = restaurantRef.child("menu");
+
     const tagLineRef = restaurantRef.child("tagline");
     const titleBackgroundRef = restaurantRef.child("titleBackground");
+
+    // console.log(JSON.stringify(nameRef));
+    // console.log(menuRef);
+
+    menuRef.on("value", snap => {
+      this.setState({
+        menu: snap.val()
+      });
+    });
+
 
     nameRef.on("value", snap => {
       this.setState({
@@ -55,10 +60,6 @@ export default class Crud extends React.Component {
     });
   }
 
-  // componentDidMount(){
-    
-  // }
-
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -72,7 +73,7 @@ export default class Crud extends React.Component {
   logout(){
     fire.auth().signOut();
   }
-// {this.state.user ? (<Admin />) : (<Login />)}
+
   render() {
     return (
       <div className="row">
@@ -81,17 +82,12 @@ export default class Crud extends React.Component {
 
         <h1>You are logged in!!!</h1>
         <h2>Admin Page!!!</h2>
+	  
+
         <button className="btn btn-danger" onClick={this.logout}>Logout</button>
 
         <table className="table ">
-<thead className="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
+
   <tbody>
     <tr>
       <th scope="row"></th>
@@ -115,4 +111,3 @@ export default class Crud extends React.Component {
   }
 }
 
-// export default Crud;
