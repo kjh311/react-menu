@@ -14,14 +14,15 @@ export default class Crud extends React.Component {
 		this.addMenuItem = this.addMenuItem.bind(this);
 		this.state = {
 			user: {},
-			menuItems: [
-				{ id: 1, menuItemContent: "Menu item 1 here!" },
-				{ id: 2, menuItemContent: "Menu item 2a here!" }
-			]
+			menuItems: [],
 		};
 	}
 
-	componentDidMount() {
+
+
+	componentWillMount() {
+
+
 		this.authListener();
 		// const rootRef = firebase.database().ref().child('react');
 
@@ -31,6 +32,7 @@ export default class Crud extends React.Component {
 			.child("restaurant");
 		const nameRef = restaurantRef.child("name");
 		const menuRef = restaurantRef.child("menu");
+		this.database = restaurantRef.child("menu");
 
 		const tagLineRef = restaurantRef.child("tagline");
 		const titleBackgroundRef = restaurantRef.child("titleBackground");
@@ -38,11 +40,25 @@ export default class Crud extends React.Component {
 		// console.log(JSON.stringify(nameRef));
 		// console.log(menuRef);
 
-		menuRef.on("value", snap => {
+		const previousMenuItems = this.state.menuItems;
+
+		this.database.on('child_added', snap => {
+			previousMenuItems.push({
+				id: snap.key,
+				menuItemContent: snap.val().menuItemContent,
+			})
+
 			this.setState({
-				menu: snap.val()
-			});
-		});
+				menuItem: previousMenuItems
+			})
+		})
+
+
+		// menuRef.on("value", snap => {
+		// 	this.setState({
+		// 		menu: snap.val()
+		// 	});
+		// });
 
 		nameRef.on("value", snap => {
 			this.setState({
@@ -78,16 +94,7 @@ export default class Crud extends React.Component {
 	}
 
 	addMenuItem(menuItem) {
-		//push menuitem to menuItems array
-		const previousMenuItems = this.state.menuItems;
-		console.log(previousMenuItems)
-		previousMenuItems.push({
-			id: previousMenuItems.length + 1, menuItemContent: menuItem
-		});
-		this.setState({
-			menuItems: previousMenuItems
-		})
-		
+		this.database.push().set({ menuItemContent: menuItem});
 	}
 
 	render() {
