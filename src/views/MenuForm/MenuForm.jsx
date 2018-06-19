@@ -23,11 +23,10 @@ export default class MenuForm extends React.Component {
 		this.props.addMenuItem(this.state.newMenuItemContent);
 
 		this.setState({
-
 			//set newmenuitemcontent to empty string
 			newMenuItemContent: '',
 		})
-		
+
 	}
 
 	render() {
@@ -38,7 +37,7 @@ export default class MenuForm extends React.Component {
 					placeholder="input new menu item"
 					value={this.state.newMenuItemContent}
 					onChange={this.handleUserInput}
-					
+					required
 				/>
 				<button onClick={this.writeMenuItem} className="menuButton">Add Menu item</button>
 			</div>

@@ -12,6 +12,7 @@ export default class Crud extends React.Component {
 		super(props);
 		this.logout = this.logout.bind(this);
 		this.addMenuItem = this.addMenuItem.bind(this);
+		this.removeMenuItem = this.removeMenuItem.bind(this);
 		this.state = {
 			user: {},
 			menuItems: [],
@@ -47,6 +48,18 @@ export default class Crud extends React.Component {
 				id: snap.key,
 				menuItemContent: snap.val().menuItemContent,
 			})
+
+			this.setState({
+				menuItem: previousMenuItems
+			})
+		})
+
+		this.database.on('child_removed', snap => {
+			for(var i=0; i < previousMenuItems.length; i++){
+				if(previousMenuItems[i].id === snap.key){
+					previousMenuItems.splice(i, 1);
+				}
+			}
 
 			this.setState({
 				menuItem: previousMenuItems
@@ -97,6 +110,10 @@ export default class Crud extends React.Component {
 		this.database.push().set({ menuItemContent: menuItem});
 	}
 
+	removeMenuItem(menuItemId){
+		this.database.child(menuItemId).remove();
+	}
+
 	render() {
 		return (
 			<div className="menuItemsWrapper">
@@ -142,6 +159,7 @@ export default class Crud extends React.Component {
 											}
 											menuItemId={menuItem.id} 
 											key={menuItem.id}
+											removeMenuItem={this.removeMenuItem}
 										/>
 									);
 								})}

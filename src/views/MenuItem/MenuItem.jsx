@@ -7,12 +7,20 @@ export default class MenuItem extends React.Component {
 		super(props);
 		this.menuItemContent = props.menuItemContent;
 		this.menuItemId = props.menuItemId;
+		this.handleRemoveMenuItem = this.handleRemoveMenuItem.bind(this);
+	}
+
+	handleRemoveMenuItem(id){
+		this.props.removeMenuItem(id);
 	}
 
 	render(props){
 		return(
 			<div className="menuItemContent">
-				<p className="menuItemContent">{this.menuItemContent}</p>
+			<p className="menuItemContent">{this.menuItemContent}</p>
+			<span className="closeBtn" onClick={() => this.handleRemoveMenuItem(this.menuItemId)}>X</span>
+				
+			
 			</div>	
 		)
 	}
