@@ -2,14 +2,7 @@ import React from "react";
 // import Admin from "./Admin";
 import Login from "./Login";
 import Crud from "./Crud";
-import fire from "./config/Fire";
-
-
-
-
-
-
-
+import fire from "../config/Fire";
 
 
 export default class LoginPage extends React.Component {

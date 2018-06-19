@@ -2,7 +2,7 @@ import React from "react";
 // import Admin from "./Admin";
 // import Login from "./Login";
 // import Home from "./Home";
-import fire from "./config/Fire";
+import fire from "../config/Fire";
 import * as firebase from "firebase";
 
 

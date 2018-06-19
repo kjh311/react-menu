@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/css/index.css';
 import App from './App';
-import Header from './Header';
+import Header from './views/Header';
 // import Login from './login';
 // import Admin from './admin';
 // import Widget from './Widget';
-import Footer from './Footer';
+import Footer from './views/Footer';
 import registerServiceWorker from './registerServiceWorker';
 // import * as firebase from 'firebase';
 

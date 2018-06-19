@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-import fire from './config/Fire';
+import fire from '../config/Fire';
 
 class Login extends Component {
   constructor(props){
@@ -44,7 +44,7 @@ class Login extends Component {
       className="form-control" id="exampleInputPassword1" placeholder="Password" />
       </div>
       <button type="submit" onClick={this.login} className="btn btn-success">Login</button>
-      <p>To create a new Admin user, visit your <a href="https://firebase.google.com/" target="_blank">FireBase Account</a></p>
+      <p>To create a new Admin user, visit your <a href="https://console.firebase.google.com/" rel="noopener noreferrer" target="_blank">FireBase Account</a></p>
       </form>
 
       </div>

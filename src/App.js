@@ -6,12 +6,12 @@ import {
   // NavLink,
   HashRouter
 } from "react-router-dom";
-import Home from "./Home";
+import Home from "./views/Home";
 // import Stuff from "./Stuff";
-import Contact from "./Contact";
-import Admin from "./Admin";
-import About from "./About";
-import Menu from "./Menu";
+import Contact from "./views/Contact";
+import Admin from "./views/Admin";
+import About from "./views/About";
+import Menu from "./views/Menu";
 import fire from "./config/Fire";
 // import Login from "./Login";
 // import Crud from "./Crud";
