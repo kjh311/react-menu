@@ -5,6 +5,7 @@
   "dependencies": {
     "@okta/okta-signin-widget": "^2.3.0",
     "firebase": "^5.0.4",
+    "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4",

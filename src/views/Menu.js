@@ -16,8 +16,7 @@ class Menu extends Component {
       .ref()
       .child("restaurant");
     const menuRef = restaurantRef.child("menu");
-    const menuTitleRef = menuRef.child("menuTitle");
-    // const burgerRef = menuRef.child("burger");
+
 
 
     menuRef.on("value", snap => {
@@ -26,16 +25,7 @@ class Menu extends Component {
       });
     });
 
-    menuTitleRef.on("value", snap => {
-      this.setState({
-        menuTitle: snap.val()
-      });
-    });
-    // burgerRef.on("value", snap => {
-    //   this.setState({
-    //     burger: snap.val()
-    //   });
-    // });
+
   }
 
 
@@ -44,7 +34,7 @@ class Menu extends Component {
       <div>
         <h1>Menu Page</h1>
          <h2>Menu:</h2>
-         <h4> {this.state.menuTitle}</h4>
+
 
 
       </div>
