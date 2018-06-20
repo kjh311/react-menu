@@ -15,15 +15,11 @@ export default class Crud extends React.Component {
 		this.removeMenuItem = this.removeMenuItem.bind(this);
 		this.state = {
 			user: {},
-			menuItems: [],
+			menuItems: []
 		};
 	}
 
-
-
 	componentWillMount() {
-
-
 		this.authListener();
 		// const rootRef = firebase.database().ref().child('react');
 
@@ -43,29 +39,28 @@ export default class Crud extends React.Component {
 
 		const previousMenuItems = this.state.menuItems;
 
-		this.database.on('child_added', snap => {
+		this.database.on("child_added", snap => {
 			previousMenuItems.push({
 				id: snap.key,
-				menuItemContent: snap.val().menuItemContent,
-			})
+				menuItemContent: snap.val().menuItemContent
+			});
 
 			this.setState({
 				menuItem: previousMenuItems
-			})
-		})
+			});
+		});
 
-		this.database.on('child_removed', snap => {
-			for(var i=0; i < previousMenuItems.length; i++){
-				if(previousMenuItems[i].id === snap.key){
+		this.database.on("child_removed", snap => {
+			for (var i = 0; i < previousMenuItems.length; i++) {
+				if (previousMenuItems[i].id === snap.key) {
 					previousMenuItems.splice(i, 1);
 				}
 			}
 
 			this.setState({
 				menuItem: previousMenuItems
-			})
-		})
-
+			});
+		});
 
 		// menuRef.on("value", snap => {
 		// 	this.setState({
@@ -107,10 +102,10 @@ export default class Crud extends React.Component {
 	}
 
 	addMenuItem(menuItem) {
-		this.database.push().set({ menuItemContent: menuItem});
+		this.database.push().set({ menuItemContent: menuItem });
 	}
 
-	removeMenuItem(menuItemId){
+	removeMenuItem(menuItemId) {
 		this.database.child(menuItemId).remove();
 	}
 
@@ -131,24 +126,7 @@ export default class Crud extends React.Component {
 								Logout
 							</button>
 
-							<table className="table ">
-								<tbody>
-									<tr>
-										<th scope="row" />
-										<td>Name of Business:</td>
-										<td>
-											<input
-												placeholder={this.state.name}
-											/>
-										</td>
-									</tr>
-									<tr>
-										<th scope="row" />
-										<td>Jacob</td>
-										<td>Thornton</td>
-									</tr>
-								</tbody>
-							</table>
+						
 
 							<div className="menuItemsBody">
 								{this.state.menuItems.map(menuItem => {
@@ -157,7 +135,7 @@ export default class Crud extends React.Component {
 											menuItemContent={
 												menuItem.menuItemContent
 											}
-											menuItemId={menuItem.id} 
+											menuItemId={menuItem.id}
 											key={menuItem.id}
 											removeMenuItem={this.removeMenuItem}
 										/>
