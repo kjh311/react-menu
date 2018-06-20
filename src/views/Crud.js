@@ -3,8 +3,8 @@ import React from "react";
 // import Login from "./Login";
 // import Home from "./Home";
 import fire from "../config/Fire";
-import MenuItem from "./MenuItem/MenuItem";
-import MenuForm from "./MenuForm/MenuForm";
+import MenuItem from "./MenuItem";
+import MenuForm from "./MenuForm";
 import * as firebase from "firebase";
 
 export default class Crud extends React.Component {
@@ -28,7 +28,7 @@ export default class Crud extends React.Component {
 			.ref()
 			.child("restaurant");
 		const nameRef = restaurantRef.child("name");
-		const menuRef = restaurantRef.child("menu");
+		// const menuRef = restaurantRef.child("menu");
 		this.database = restaurantRef.child("menu");
 
 		const tagLineRef = restaurantRef.child("tagline");
@@ -39,6 +39,7 @@ export default class Crud extends React.Component {
 
 		const previousMenuItems = this.state.menuItems;
 
+//add new menu item
 		this.database.on("child_added", snap => {
 			previousMenuItems.push({
 				id: snap.key,
@@ -50,6 +51,7 @@ export default class Crud extends React.Component {
 			});
 		});
 
+//delete menu item
 		this.database.on("child_removed", snap => {
 			for (var i = 0; i < previousMenuItems.length; i++) {
 				if (previousMenuItems[i].id === snap.key) {
@@ -61,12 +63,6 @@ export default class Crud extends React.Component {
 				menuItem: previousMenuItems
 			});
 		});
-
-		// menuRef.on("value", snap => {
-		// 	this.setState({
-		// 		menu: snap.val()
-		// 	});
-		// });
 
 		nameRef.on("value", snap => {
 			this.setState({

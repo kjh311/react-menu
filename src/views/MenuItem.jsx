@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import propTypes from "prop-types";
 
 export default class MenuItem extends React.Component {
@@ -35,8 +35,6 @@ export default class MenuItem extends React.Component {
 										</td>
 										<td><button className="btn btn-danger closeBtn" onClick={() => {if(window.confirm('Delete the item?')) this.handleRemoveMenuItem(this.menuItemId)}}>Delete</button></td>
 									</tr>
-									{/*onClick={() => {if(confirm('Delete the item?')) {this.deleteItem};}}*/}
-		
 								</tbody>
 							</table>
 				

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 export default class MenuForm extends React.Component {
 	constructor(props) {
@@ -32,6 +32,7 @@ export default class MenuForm extends React.Component {
 	render() {
 		return (
 			<div className="formWrapper">
+			<form onSubmit={this.writeMenuItem}>
 				<input
 					className="menuInput"
 					placeholder="input new menu item"
@@ -39,7 +40,8 @@ export default class MenuForm extends React.Component {
 					onChange={this.handleUserInput}
 					required
 				/>
-				<button onClick={this.writeMenuItem} className="menuButton">Add Menu item</button>
+				<input type="submit" className="menuButton btn btn-success" placeholder="add menu item" />
+				</form>
 			</div>
 		);
 	}
