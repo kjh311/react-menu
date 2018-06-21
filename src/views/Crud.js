@@ -43,7 +43,8 @@ export default class Crud extends React.Component {
 		this.database.on("child_added", snap => {
 			previousMenuItems.push({
 				id: snap.key,
-				menuItemContent: snap.val().menuItemContent
+				menuItemContent: snap.val().menuItemContent,
+				menuItemPrice: snap.val().menuItemPrice,
 			});
 
 			this.setState({
@@ -98,7 +99,8 @@ export default class Crud extends React.Component {
 	}
 
 	addMenuItem(menuItem) {
-		this.database.push().set({ menuItemContent: menuItem });
+		this.database.push().set({ menuItemContent: menuItem, menuItemPrice: menuItem,  });
+		
 	}
 
 	removeMenuItem(menuItemId) {
@@ -128,9 +130,13 @@ export default class Crud extends React.Component {
 								{this.state.menuItems.map(menuItem => {
 									return (
 										<MenuItem
+											menuItemPrice={
+												menuItem.menuItemPrice
+											}
 											menuItemContent={
 												menuItem.menuItemContent
 											}
+											
 											menuItemId={menuItem.id}
 											key={menuItem.id}
 											removeMenuItem={this.removeMenuItem}

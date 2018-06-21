@@ -38,4 +38,4 @@ export default class LoginPage extends React.Component {
   }
 }
 
-// export default Admin;
+

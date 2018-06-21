@@ -5,6 +5,7 @@ export default class MenuItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.menuItemContent = props.menuItemContent;
+		this.menuItemPrice = props.menuItemPrice;
 		this.menuItemId = props.menuItemId;
 		this.handleRemoveMenuItem = this.handleRemoveMenuItem.bind(this);
 	}
@@ -25,7 +26,7 @@ export default class MenuItem extends React.Component {
 											<input
 												className="menuItemContent" placeholder={this.menuItemContent}
 											/>
-											<input placeholder="price"/>
+											<input className="menuItemPrice" placeholder={this.menuItemPrice}/>
 											<input placeholder="description"/>
 											<input placeholder="image"/>
 										</td>

@@ -5,6 +5,7 @@ export default class MenuRender extends React.Component {
 	constructor(props) {
 		super(props);
 		this.menuItemContent = props.menuItemContent;
+		this.menuItemPrice = props.menuItemPrice;
 		this.menuItemId = props.menuItemId;
 		this.handleRemoveMenuItem = this.handleRemoveMenuItem.bind(this);
 	}
@@ -21,9 +22,9 @@ export default class MenuRender extends React.Component {
 				<ul>
 					<li>
 						<p>{this.menuItemContent}</p>
-						<p>price</p>
+						<p>{this.menuItemPrice}</p>
 						<p>description</p>
-						<img src="" />
+						<img src="" alt="menu item img" />
 					</li>
 
 				</ul>

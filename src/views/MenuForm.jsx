@@ -5,27 +5,44 @@ export default class MenuForm extends React.Component {
 		super(props);
 		this.state = {
 			newMenuItemContent: '',
+			newMenuItemPrice: '',
 		};
-		this.handleUserInput = this.handleUserInput.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		// this.handlePriceInput = this.handlePriceInput.bind(this);
 		this.writeMenuItem = this.writeMenuItem.bind(this);
 	}
 
-	handleUserInput(e){
-		// console.log(this);
+	handleChange(e){
 		this.setState({
-			newMenuItemContent: e.target.value, //the value of the text input
+			[e.target.name]: e.target.value, //the value of the text input
 		})
+		
 	}
+
+	// handlePriceInput(e){
+	// 	console.log(this);
+	// 	this.setState({
+	// 		newMenuItemPrice: e.target.value, //the value of the text input
+	// 	})
+	// }
 
 	writeMenuItem(){
 		//a method that sets the menuitemcontent to value of input
-
-		this.props.addMenuItem(this.state.newMenuItemContent);
+		// alert(this.state.newMenuItemContent + " " + this.state.newMenuItemPrice)
+		
 
 		this.setState({
 			//set newmenuitemcontent to empty string
 			newMenuItemContent: '',
+			newMenuItemPrice: '',
 		})
+
+
+
+		this.props.addMenuItem( this.state.newMenuItemContent,  this.state.newMenuItemPrice);
+		// this.props.addMenuItem( this.state.newMenuItemPrice);
+
+		// console.log(this.state.newMenuItemContent + " " + this.state.newMenuItemPrice)
 
 	}
 
@@ -34,10 +51,21 @@ export default class MenuForm extends React.Component {
 			<div className="formWrapper">
 			<form onSubmit={this.writeMenuItem}>
 				<input
+				 	name="newMenuItemContent"
 					className="menuInput"
 					placeholder="input new menu item"
+					onChange={this.handleChange.bind(this)}
 					value={this.state.newMenuItemContent}
-					onChange={this.handleUserInput}
+					required
+				/>
+				<input
+				 	name="newMenuItemPrice"
+					type="number"
+					min="0.01" step="0.01"
+					className="menuInput"
+					placeholder="input new menu price"
+					onChange={this.handleChange.bind(this)}
+					value={this.state.newMenuItemPrice}
 					required
 				/>
 				<input type="submit" className="menuButton btn btn-success" placeholder="add menu item" />
